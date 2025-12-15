@@ -51,7 +51,7 @@ eval "$(ssh-agent -s)" &> /dev/null
 export PATH=$PATH:$HOME/.pulumi/bin
 
 # add zig to path
-export PATH="$PATH:$HOME/zig-linux-x86_64-0.12.0"
+export PATH="$PATH:$HOME/zig-installs/zig-x86_64-linux-0.15.2"
 
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -68,7 +68,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 ssh-add ~/.ssh/github_ed25519 &> /dev/null
 
 # WSL GUI config
-export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf &>/dev/null):0 # in WSL 2
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 export LIBGL_ALWAYS_INDIRECT=1
 
 
